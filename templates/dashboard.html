@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1>Welcome, {{ current_user.username }} 👋</h1>
+
+<!-- Add Drug Form -->
+<form method="POST">
+    <label for="drug_select">Select a medication:</label>
+    <select name="drug_id" id="drug_select" required>
+        {% for drug in all_drugs %}
+        <option value="{{ drug.id }}">{{ drug.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Add Medication</button>
+</form>
+
+<h2>Your Medications:</h2>
+{% if drugs %}
+<ul>
+    {% for drug in drugs %}
+    <li>
+        <a href="{{ drug.wiki_link }}" target="_blank">{{ drug.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No drugs added yet. Add your first drug above!</p>
+{% endif %}
+
+
+<!-- Highlight Interaction Warnings -->
+{% if interactions %}
+<h3 style="color: red;">Potential Interactions:</h3>
+<ul>
+    {% for interaction in interactions %}
+    <li style="color: #ff6347; font-weight: bold;">{{ interaction }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

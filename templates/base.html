@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Med Monitor{% endblock %}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="header-nav">
+                <!-- Logo on the left -->
+                <div class="logo-container">
+                    <a href="{{ url_for('dashboard') }}">
+                        <img src="{{ url_for('static', filename='dogtor.png') }}" alt="Dogtor Logo" class="logo">
+                    </a>
+                </div>
+
+                {% if current_user.is_authenticated %}
+                <div class="nav-links">
+                    <a href="{{ url_for('dashboard') }}">Dashboard</a> | 
+                    <a href="{{ url_for('appointments') }}">Appointments</a> | 
+                    <a href="{{ url_for('ai_assistant') }}">AI Assistant</a> | 
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+                {% endif %}
+            </nav>
+        </header>
+        <main>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2025 Lekosfera. Built with ❤️ for you ill people!</p>
+    </footer>
+</body>
+
+</html>

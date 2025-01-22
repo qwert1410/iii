@@ -1,0 +1,111 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Container Styles */
+.container {
+    max-width: 600px;
+    width: 90%;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px auto;
+}
+
+/* Buttons */
+button, .btn {
+    display: inline-block;
+    background: #ff6ec7;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: transform 0.2s;
+}
+
+button:hover, .btn:hover {
+    transform: scale(1.05);
+    background: #ff3aa2;
+}
+
+/* Form Inputs */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ff6ec7;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Headings */
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #ff3aa2;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #222;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #ff6ec7;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #ff3aa2;
+}
+
+/* Flash Messages */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li.success {
+    color: #2ecc71;
+}
+
+li.danger {
+    color: #e74c3c;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #555;
+}
+.logo-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the logo */
+    align-items: center; /* Vertically align the logo */
+    margin: 5px 0; /* Add some space around the logo */
+}
+
+.logo {
+    max-width: 300px; /* Adjust the size of the logo if necessary */
+    height: 100px;
+}

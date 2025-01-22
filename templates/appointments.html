@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Appointments{% endblock %}
+
+{% block content %}
+<h1>Welcome, {{ current_user.username }} 👋</h1>
+
+<!-- Add Visit Form -->
+<h2>Add a New Visit</h2>
+<form method="POST">
+    <input type="text" name="reason" placeholder="Reason for visit" required>
+    <textarea name="notes" placeholder="Additional notes (optional)"></textarea>
+    
+    <!-- Add custom date input -->
+    <label for="appointment_date">Appointment Date</label>
+    <input type="date" name="appointment_date" required>
+    
+    <button type="submit">Add Visit</button>
+</form>
+
+<!-- Visit History -->
+<h2>Your Visit History</h2>
+{% if visits %}
+<ul>
+    {% for visit in visits %}
+    <li>
+        <strong>{{ visit.date.strftime('%Y-%m-%d') }} - {{ visit.reason }}</strong>
+        <p>{{ visit.notes }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No visits recorded yet.</p>
+{% endif %}
+
+{% endblock %}

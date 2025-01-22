@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ 'Register' if register else 'Login' }}{% endblock %}
+
+{% block content %}
+<h1>{{ 'Register' if register else 'Login' }}</h1>
+
+<!-- Login/Register Form -->
+<form method="POST">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">{{ 'Register' if register else 'Login' }}</button>
+</form>
+
+<!-- Switch Between Login/Register -->
+{% if not register %}
+<p>
+    Don’t have an account? 
+    <a href="{{ url_for('register') }}">Register here</a>
+</p>
+{% else %}
+<p>
+    Already have an account? 
+    <a href="{{ url_for('login') }}">Login here</a>
+</p>
+{% endif %}
+{% endblock %}
